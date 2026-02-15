@@ -25,8 +25,8 @@ const TransactionExplorer = () => {
     } catch (err) { console.error(err); }
   }, [token, page, search, category, transactions]); 
 
-  useEffect(() => { setPage(1); fetchT(true); }, [search, category]);
-  useEffect(() => { if (page > 1) fetchT(); }, [page]);
+  useEffect(() => { setPage(1); fetchT(true); }, [search, category, fetchT]);
+  useEffect(() => { if (page > 1) fetchT(); }, [page, fetchT]);
 
   const del = async (id) => {
     if (window.confirm("Delete?")) {
