@@ -2,6 +2,10 @@
 
 This is the React client for the Bellcorp Expense Tracker.
 
+### Published link: https://expense-tracker-frontend-olive-eight.vercel.app
+
+### backend link: https://github.com/peninsula101/Expense-Tracker-backend
+
 ## Tech Stack
 
 - React.js
