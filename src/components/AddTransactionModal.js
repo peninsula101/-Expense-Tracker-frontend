@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
+import { API_URL } from '../utils/apiURL'
 
 const AddTransactionModal = ({ closeModal, refreshData, existingData }) => {
   const { token } = useContext(AuthContext);
@@ -32,21 +33,21 @@ const AddTransactionModal = ({ closeModal, refreshData, existingData }) => {
     e.preventDefault();
     try {
       if (existingData) {
-        await axios.put(`http://localhost:5000/api/transactions/${existingData._id}`, formData, {
+        await axios.put(`${API_URL}/transactions/${existingData._id}`, formData, {
           headers: { "auth-token": token }
         });
       } else {
-        await axios.post('http://localhost:5000/api/transactions', formData, {
+        await axios.post(`${API_URL}/transactions`, formData, {
           headers: { "auth-token": token }
         });
       }
       refreshData();
       closeModal();
     } catch (err) {
+      console.error(err); 
       alert("Error saving transaction");
     }
   };
-
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded shadow-lg w-96">
